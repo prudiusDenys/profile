@@ -1,0 +1,9 @@
+@import "src/common/variables/variables";
+
+.title h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #fff;
+  font-weight: $boldFont;
+  text-transform: uppercase;
+}

@@ -1,0 +1,51 @@
+@import "src/common/mixins/mixins";
+@import "src/common/variables/variables";
+
+.form{
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  background: #fff;
+  padding: 40px 70px 44px 30px;
+  .inputsWrapper{
+    display: flex;
+    margin: 0 -15px;
+
+    .label{
+      display: flex;
+      align-items: center;
+      flex: 0 0 33.333%;
+      padding: 0 15px;
+      border-right: 1px solid #CAE7FE;
+      &:last-child{
+        border-right: none;
+      }
+    }
+    .formIcon{
+      @include wh(36px, 36px);
+      color: $iconColor;
+      margin-right: 42px;
+      svg{
+        @include wh(100%,100%);
+      }
+    }
+    .input{
+      max-width: 254px;
+      width: 100%;
+      font-family: "Open Sans", sans-serif;
+      font-size: 14px;
+    }
+  }
+  .formSubmit{
+    display: block;
+    margin: 0 auto;
+    font-weight: $boldFont;
+    padding: 15px 26px;
+    border-radius: 36px;
+    color: #fff;
+    background-color: $iconColor;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 26px;
+  }
+}

@@ -1,0 +1,9 @@
+@mixin bg($position, $size, $repeat){
+  background-position: $position;
+  background-size: $size;
+  background-repeat: $repeat;
+}
+@mixin wh($w,$h){
+  width: $w;
+  height: $h;
+}

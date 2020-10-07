@@ -1,0 +1,27 @@
+@import "src/common/variables/variables";
+
+.mainInfoBlock{
+  background: linear-gradient(270deg, #1A78C2 0%, #1A78C2 101.06%);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+
+  .mainInfoBlockContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 30px;
+  }
+
+  .AvatarAndName{
+    display: flex;
+    align-items: center;
+    .avatar{
+      margin-right: 42px;
+    }
+    .personName{
+      font-weight: $boldFont;
+      font-size: 30px;
+      color: #fff;
+    }
+  }
+}

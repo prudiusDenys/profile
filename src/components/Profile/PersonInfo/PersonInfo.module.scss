@@ -1,0 +1,43 @@
+@import "src/common/mixins/mixins";
+@import "src/common/variables/variables";
+
+.personalInfoWrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  .personInfo {
+    padding: 16px 0;
+    margin-right: 26px;
+    display: flex;
+    align-items: center;
+
+    .personIcon {
+      @include wh(56px, 36px);
+      padding-right: 20px;
+      border-right: 1px solid white;
+
+      a {
+        color: white;
+
+        svg {
+          @include wh(36px, 100%);
+        }
+      }
+    }
+
+    .personBox {
+      display: flex;
+      align-items: center;
+
+      .avatar {
+        margin: 0 20px;
+      }
+
+      .personName {
+        font-weight: $boldFont;
+        color: white;
+      }
+    }
+  }
+}
+
