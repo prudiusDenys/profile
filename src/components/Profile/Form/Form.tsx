@@ -7,13 +7,12 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import PhoneIcon from '@material-ui/icons/Phone';
-import {saveState} from "../../../localStorage/localStorage";
 import {ProfileDataType} from "../Profile";
-import getFieldValue from "react-hook-form/dist/logic/getFieldValue";
-
 
 type PropsType = {
 	setProfile: (profileData: ProfileDataType) => void
+	setOpen: (value: boolean) => void
+	getNewProfileData: (value: ProfileDataType) => void
 }
 
 
@@ -25,15 +24,21 @@ const schema = Yup.object().shape({
 
 export const Form = (props: PropsType) => {
 
-	const {register, handleSubmit, errors, formState} = useForm<ProfileDataType>({
+	const {register, handleSubmit, errors, formState,} = useForm<ProfileDataType>({
 		mode: "all",
 		resolver: yupResolver(schema)
 	});
 
-	const onSubmit = (data: ProfileDataType, e: any) => {
-		saveState('formData', data)
-		props.setProfile(data)
+
+	function buttonHandler() {
+		props.setOpen(true)
 	}
+
+	const onSubmit = (data: ProfileDataType, e: any) => {
+		props.getNewProfileData(data)
+		buttonHandler()
+	}
+
 
 	return (
 		<form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
@@ -42,7 +47,7 @@ export const Form = (props: PropsType) => {
 					<div className={classes.formIcon}>
 						<AccountBoxIcon/>
 					</div>
-					<TextField color={'primary'} type={'text'} id="personName" label="Укажите ваши фамилию и имя"
+					<TextField color={'secondary'} type={'text'} id="personName" label="Укажите ваши фамилию и имя"
 										 variant="outlined"
 										 name={'personName'} className={classes.input} inputRef={register} error={errors.personName && true}
 										 helperText={errors.personName?.message}/>
@@ -51,7 +56,7 @@ export const Form = (props: PropsType) => {
 					<div className={classes.formIcon}>
 						<AlternateEmailIcon/>
 					</div>
-					<TextField id="mail" label="E-mail" type={'email'} variant="outlined" name={'email'} className={classes.input}
+					<TextField id="mail" color={'secondary'} label="E-mail" type={'email'} variant="outlined" name={'email'} className={classes.input}
 										 inputRef={register}
 										 error={errors.email && true} helperText={errors.email?.message}/>
 				</label>
@@ -59,12 +64,13 @@ export const Form = (props: PropsType) => {
 					<div className={classes.formIcon}>
 						<PhoneIcon/>
 					</div>
-					<TextField id="phone" label="Укажите номер телефона" variant="outlined" name={'phone'}
+					<TextField id="phone" color={'secondary'} label="Укажите номер телефона" variant="outlined" name={'phone'}
 										 className={classes.input} inputRef={register} type={'tel'}
 										 error={errors.phone && true} helperText={errors.phone?.message}/>
 				</label>
 			</div>
-			<button disabled={formState.isSubmitting} className={classes.formSubmit} type={'submit'}>Сохранить изменения
+			<button disabled={formState.isSubmitting} className={classes.formSubmit}
+			>Сохранить изменения
 			</button>
 		</form>
 	)

@@ -1,27 +1,53 @@
 @import "src/common/variables/variables";
 
-.mainInfoBlock{
+.mainInfoBlock {
   background: linear-gradient(270deg, #1A78C2 0%, #1A78C2 101.06%);
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
 
-  .mainInfoBlockContent{
+  .mainInfoBlockContent {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 24px 30px;
+
+    @media (max-width: 675px) {
+      .btnSpan {
+        display: none;
+      }
+    }
+    @media (max-width: 600px) {
+      padding: 24px 10px;
+    }
   }
 
-  .AvatarAndName{
+  .AvatarAndName {
     display: flex;
     align-items: center;
-    .avatar{
+
+    .avatar {
       margin-right: 42px;
+      @media (max-width: 675px) {
+        margin-right: 22px;
+      }
+      @media (max-width: 675px) {
+        margin-right: 10px;
+      }
     }
-    .personName{
+
+    .personName {
       font-weight: $boldFont;
       font-size: 30px;
       color: #fff;
+      @media (max-width: 675px) {
+        font-size: 24px;
+      }
+      @media (max-width: 500px) {
+        font-size: 18px;
+      }
+      @media (max-width: 460px) {
+        font-size: 16px;
+      }
     }
   }
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./PersonInfo.module.scss";
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
-import {Avatar} from "../../../common/components/Avatar/Avatar";
 import {nameCut} from "../../../functions/functions";
+import {Avatar} from "../../../common/components/Avatar/Avatar";
 
 type PropsType = {
 	personName: string
@@ -17,7 +17,7 @@ export const PersonInfo = (props: PropsType) => {
 				</div>
 				<div className={classes.personBox}>
 					<div className={classes.avatar}>
-						<Avatar width={'40'} height={'40'}/>
+						<Avatar/>
 					</div>
 					<span className={classes.personName}>{nameCut(props.personName)}</span>
 				</div>

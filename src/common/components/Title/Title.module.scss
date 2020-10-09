@@ -6,4 +6,8 @@
   color: #fff;
   font-weight: $boldFont;
   text-transform: uppercase;
+  
+  @media (max-width: 460px) {
+    font-size: 14px;
+  }
 }

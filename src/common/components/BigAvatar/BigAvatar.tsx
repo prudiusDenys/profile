@@ -1,9 +1,9 @@
 import React from "react";
-import classes from "./Avatar.module.scss";
+import classes from "./BigAvatar.module.scss";
 import avatar from '../../../assets/images/profileImage.png'
 
 
-export const Avatar = () => {
+export const BigAvatar = () => {
 
 	return(
 		<div className={classes.avatar}>

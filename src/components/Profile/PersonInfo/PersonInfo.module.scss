@@ -16,13 +16,23 @@
       padding-right: 20px;
       border-right: 1px solid white;
 
+      @media (max-width: 460px) {
+        @include wh(34px, 24px);
+        padding-right: 10px;
+      }
+
+
       a {
         color: white;
 
         svg {
           @include wh(36px, 100%);
+          @media (max-width: 460px) {
+            @include wh(24px, 100%);
+          }
         }
       }
+
     }
 
     .personBox {
@@ -31,6 +41,10 @@
 
       .avatar {
         margin: 0 20px;
+
+        @media (max-width: 460px) {
+          margin: 0 10px;
+        }
       }
 
       .personName {
@@ -41,3 +55,19 @@
   }
 }
 
+
+@media (max-width: 600px) {
+
+  .personalInfoWrapper {
+    .personInfo {
+      margin-right: 0;
+    }
+  }
+  .personName {
+    display: none;
+  }
+}
+
+@media (max-width: 460px) {
+
+}

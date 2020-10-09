@@ -6,16 +6,27 @@
   border-radius: 10px;
   background: #fff;
   padding-left: 74px;
+  @media (max-width:600px) {
+    padding-left: 10px;
+  }
 
   .contact {
-    padding: 32px 0;
+    padding: 32px 0px;
     display: flex;
     align-items: center;
 
+    @media (max-width:600px) {
+      padding: 20px 0;
+    }
+
     .contactIcon {
-      margin-right: 42px;
+      margin-right: 27px;
       @include wh(36px, 36px);
-      color: $iconColor;
+      color: $primaryColor;
+      
+      @media (max-width: 600px) {
+        margin-right: 10px;
+      }
 
       svg {
         @include wh(100%, 100%);
@@ -24,6 +35,11 @@
 
     .contactType {
       font-size: 18px;
+      padding: 0 15px;
+
+      @media (max-width: 460px) {
+        font-size: 14px;
+      }
     }
   }
 }

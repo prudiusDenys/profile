@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./MainInfoBlock.module.scss";
-import {Avatar} from "../../../common/components/Avatar/Avatar";
 import Button from '@material-ui/core/Button';
 import CreateIcon from '@material-ui/icons/Create';
 import CloseIcon from '@material-ui/icons/Close';
+import {BigAvatar} from "../../../common/components/BigAvatar/BigAvatar";
 
 
 type PropsType = {
@@ -11,6 +11,7 @@ type PropsType = {
 	editProfile: boolean
 	personName: string
 }
+
 
 export const MainInfoBlock = (props: PropsType) => {
 
@@ -29,14 +30,14 @@ export const MainInfoBlock = (props: PropsType) => {
 			<div className={classes.mainInfoBlockContent}>
 				<div className={classes.AvatarAndName}>
 					<div className={classes.avatar}>
-						<Avatar width={'80'} height={'80'}/>
+						<BigAvatar/>
 					</div>
 					<div className={classes.personName}>
 						{props.personName}
 					</div>
 				</div>
-				<Button variant={'text'} color='inherit' endIcon={!props.editProfile ? <CreateIcon/> : <CloseIcon/>}
-								onClick={onclickHandler}>{!props.editProfile ? buttonData.edit : buttonData.form}</Button>
+				<Button style={{color:'#fff', fontWeight:'bold', fontSize: '14px'}} variant={'text'} color='inherit' endIcon={!props.editProfile ? <CreateIcon/> : <CloseIcon/>}
+								onClick={onclickHandler}><span className={classes.btnSpan}>{!props.editProfile ? buttonData.edit : buttonData.form}</span> </Button>
 			</div>
 		</div>
 	)

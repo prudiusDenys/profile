@@ -10,8 +10,15 @@
   }
   .profileBreadCrumbs{
     margin-bottom: 36px;
+
+    @media (max-width: 460px) {
+      margin-bottom: 10px;
+    }
   }
   .profileMainInfoBlock{
     margin-bottom: 24px;
+    @media (max-width: 550px) {
+      margin-bottom: 10px;
+    }
   }
 }
