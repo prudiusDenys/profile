@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/prudiusDenys/profile/prudiusDenys/static/css/main.2489b53d.chunk.css",
-    "main.js": "/prudiusDenys/profile/prudiusDenys/static/js/main.d811bff7.chunk.js",
-    "main.js.map": "/prudiusDenys/profile/prudiusDenys/static/js/main.d811bff7.chunk.js.map",
-    "runtime-main.js": "/prudiusDenys/profile/prudiusDenys/static/js/runtime-main.8db65a9c.js",
-    "runtime-main.js.map": "/prudiusDenys/profile/prudiusDenys/static/js/runtime-main.8db65a9c.js.map",
-    "static/js/2.ee76e245.chunk.js": "/prudiusDenys/profile/prudiusDenys/static/js/2.ee76e245.chunk.js",
-    "static/js/2.ee76e245.chunk.js.map": "/prudiusDenys/profile/prudiusDenys/static/js/2.ee76e245.chunk.js.map",
-    "index.html": "/prudiusDenys/profile/prudiusDenys/index.html",
-    "precache-manifest.e788dc6ba6d52f3ffe56386f9596b0ef.js": "/prudiusDenys/profile/prudiusDenys/precache-manifest.e788dc6ba6d52f3ffe56386f9596b0ef.js",
-    "service-worker.js": "/prudiusDenys/profile/prudiusDenys/service-worker.js",
-    "static/css/main.2489b53d.chunk.css.map": "/prudiusDenys/profile/prudiusDenys/static/css/main.2489b53d.chunk.css.map",
-    "static/js/2.ee76e245.chunk.js.LICENSE.txt": "/prudiusDenys/profile/prudiusDenys/static/js/2.ee76e245.chunk.js.LICENSE.txt",
-    "static/media/profileBC.jpg": "/prudiusDenys/profile/prudiusDenys/static/media/profileBC.84fd14e6.jpg"
+    "main.css": "/profile/static/css/main.2489b53d.chunk.css",
+    "main.js": "/profile/static/js/main.eb62c3e5.chunk.js",
+    "main.js.map": "/profile/static/js/main.eb62c3e5.chunk.js.map",
+    "runtime-main.js": "/profile/static/js/runtime-main.3fabfc16.js",
+    "runtime-main.js.map": "/profile/static/js/runtime-main.3fabfc16.js.map",
+    "static/js/2.ee76e245.chunk.js": "/profile/static/js/2.ee76e245.chunk.js",
+    "static/js/2.ee76e245.chunk.js.map": "/profile/static/js/2.ee76e245.chunk.js.map",
+    "index.html": "/profile/index.html",
+    "precache-manifest.48e7b4b570715ec4ac7989f57d0de4cc.js": "/profile/precache-manifest.48e7b4b570715ec4ac7989f57d0de4cc.js",
+    "service-worker.js": "/profile/service-worker.js",
+    "static/css/main.2489b53d.chunk.css.map": "/profile/static/css/main.2489b53d.chunk.css.map",
+    "static/js/2.ee76e245.chunk.js.LICENSE.txt": "/profile/static/js/2.ee76e245.chunk.js.LICENSE.txt",
+    "static/media/profileBC.jpg": "/profile/static/media/profileBC.84fd14e6.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8db65a9c.js",
+    "static/js/runtime-main.3fabfc16.js",
     "static/js/2.ee76e245.chunk.js",
     "static/css/main.2489b53d.chunk.css",
-    "static/js/main.d811bff7.chunk.js"
+    "static/js/main.eb62c3e5.chunk.js"
   ]
 }
