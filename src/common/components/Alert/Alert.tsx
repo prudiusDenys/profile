@@ -100,7 +100,7 @@ export const Alert = (props: PropsType) => {
 			.then(res => {
 				props.setProfile(restoreState('formData', props.newProfile))
 				props.setOpen(false);
-				props.setAlert(true)
+				props.setAlert(false)
 			})
 			.catch(error => console.log(error))
 	}
