@@ -9,6 +9,6 @@ const END_POINT = process.env.REACT_APP_API_KEY
 
 export const requestsAPI = {
 	createRequestAPI(values: ProfileDataType){
-		return instance.post(`http://jsonplaceholder.typicode.com/${END_POINT}`, values)
+		return instance.post(`//jsonplaceholder.typicode.com/${END_POINT}`, values)
 	}
 }
