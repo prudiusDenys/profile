@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/prudiusDenys/profile/prudiusDenys/static/css/main.2489b53d.chunk.css",
+    "main.js": "/prudiusDenys/profile/prudiusDenys/static/js/main.d811bff7.chunk.js",
+    "main.js.map": "/prudiusDenys/profile/prudiusDenys/static/js/main.d811bff7.chunk.js.map",
+    "runtime-main.js": "/prudiusDenys/profile/prudiusDenys/static/js/runtime-main.8db65a9c.js",
+    "runtime-main.js.map": "/prudiusDenys/profile/prudiusDenys/static/js/runtime-main.8db65a9c.js.map",
+    "static/js/2.ee76e245.chunk.js": "/prudiusDenys/profile/prudiusDenys/static/js/2.ee76e245.chunk.js",
+    "static/js/2.ee76e245.chunk.js.map": "/prudiusDenys/profile/prudiusDenys/static/js/2.ee76e245.chunk.js.map",
+    "index.html": "/prudiusDenys/profile/prudiusDenys/index.html",
+    "precache-manifest.e788dc6ba6d52f3ffe56386f9596b0ef.js": "/prudiusDenys/profile/prudiusDenys/precache-manifest.e788dc6ba6d52f3ffe56386f9596b0ef.js",
+    "service-worker.js": "/prudiusDenys/profile/prudiusDenys/service-worker.js",
+    "static/css/main.2489b53d.chunk.css.map": "/prudiusDenys/profile/prudiusDenys/static/css/main.2489b53d.chunk.css.map",
+    "static/js/2.ee76e245.chunk.js.LICENSE.txt": "/prudiusDenys/profile/prudiusDenys/static/js/2.ee76e245.chunk.js.LICENSE.txt",
+    "static/media/profileBC.jpg": "/prudiusDenys/profile/prudiusDenys/static/media/profileBC.84fd14e6.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8db65a9c.js",
+    "static/js/2.ee76e245.chunk.js",
+    "static/css/main.2489b53d.chunk.css",
+    "static/js/main.d811bff7.chunk.js"
+  ]
+}
