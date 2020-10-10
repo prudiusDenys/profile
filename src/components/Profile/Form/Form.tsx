@@ -15,7 +15,6 @@ type PropsType = {
 	getNewProfileData: (value: ProfileDataType) => void
 }
 
-
 const schema = Yup.object().shape({
 	personName: Yup.string().required('Поле обязятельно').matches(/^([A-ZА-ЯЁ][a-zа-яё]+)\s([A-ZА-ЯЁ][a-zа-яё])/g, 'Вы неверно указали имя'),
 	email: Yup.string().email('Вы неверно указали email').required('Поле обязятельно'),
@@ -29,11 +28,9 @@ export const Form = (props: PropsType) => {
 		resolver: yupResolver(schema)
 	});
 
-
 	function buttonHandler() {
 		props.setOpen(true)
 	}
-
 	const onSubmit = (data: ProfileDataType, e: any) => {
 		props.getNewProfileData(data)
 		buttonHandler()
@@ -56,7 +53,8 @@ export const Form = (props: PropsType) => {
 					<div className={classes.formIcon}>
 						<AlternateEmailIcon/>
 					</div>
-					<TextField id="mail" color={'secondary'} label="E-mail" type={'email'} variant="outlined" name={'email'} className={classes.input}
+					<TextField id="mail" color={'secondary'} label="E-mail" type={'email'} variant="outlined" name={'email'}
+										 className={classes.input}
 										 inputRef={register}
 										 error={errors.email && true} helperText={errors.email?.message}/>
 				</label>

@@ -1,29 +1,25 @@
 import React from 'react';
-import classes from './ConfirmAlert.module.scss'
+import classes from './Alert.module.scss'
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import {makeStyles, withStyles, IconButton, useMediaQuery,} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import {restoreState, saveState} from "../../../localStorage/localStorage";
+import {makeStyles, withStyles, useMediaQuery} from '@material-ui/core';
+import {ProfileDataType} from "../../../components/Profile/Profile";
+import {requestsAPI} from "../../../api/apiRequests";
 import {theme} from "../../styles/theme";
-
 
 type PropsType = {
 	open: boolean
-	setAlert: (value: boolean) => void
 	setOpen: (value: boolean) => void
+	newProfile: ProfileDataType
+	setProfile: (value: ProfileDataType) => void
+	setAlert: (value: boolean) => void
 }
 
-const useStyles = makeStyles(theme => ({
-	cancelStyleButton: {
-		color: '#00BFA5',
-		background: '#fff',
-		"&:hover": {
-			background: '#fff'
-		},
-	},
+const useStyles = makeStyles({
 	saveStyleButton: {
 		color: '#fff',
 		background: '#00BFA5',
@@ -31,12 +27,7 @@ const useStyles = makeStyles(theme => ({
 			background: '#00BFA5'
 		},
 	},
-	iconClose: {
-		width: '24px',
-		height: '24px',
-	}
-}))
-
+})
 
 const StyledDialogContent = withStyles({
 	root: {
@@ -86,21 +77,12 @@ const StyledButton = withStyles({
 		},
 	}
 })(Button)
-const StyledIconButton = withStyles({
-	root: {
-		position: 'absolute',
-		top: '8px',
-		right: '8px',
-		width: '24px',
-		height: '24px',
-	},
-	contained: {}
-})(IconButton)
 
 
-export const AlertDialog = (props: PropsType) => {
+export const Alert = (props: PropsType) => {
 
 	const matches = useMediaQuery(theme.breakpoints.down('xs'))
+	const styles = useStyles()
 
 	const StyledDialog = withStyles({
 		paperScrollPaper: {
@@ -112,42 +94,34 @@ export const AlertDialog = (props: PropsType) => {
 		},
 	})(Dialog)
 
-	const styles = useStyles()
-
-	const handleClose = () => {
-		props.setOpen(false)
-	};
-
-	const onClickHandler = () => {
-		props.setOpen(true);
-		props.setAlert(true);
+	const onSubmit = () => {
+		saveState('formData', props.newProfile)
+		requestsAPI.createRequestAPI(props.newProfile)
+			.then(res => {
+				props.setProfile(restoreState('formData', props.newProfile))
+				props.setOpen(false);
+				props.setAlert(true)
+			})
+			.catch(error => console.log(error))
 	}
 
 	return (
 		<div>
 			<StyledDialog
 				open={props.open}
-				onClose={handleClose}
 				aria-labelledby="alert-dialog-title"
 				aria-describedby="alert-dialog-description"
 			>
-				<StyledIconButton aria-label="delete">
-					<CloseIcon className={styles.iconClose} onClick={handleClose}/>
-				</StyledIconButton>
+
 				<StyledDialogContent>
 					<StyledDialogContentText id="alert-dialog-description">
-						<span className={classes.contentTextSpan}>Сохранить изменения?</span>
+						<span className={classes.contentTextSpan}>Данные успешно сохранены</span>
 					</StyledDialogContentText>
 				</StyledDialogContent>
 				<StyledDialogActions>
-					<StyledButton onClick={onClickHandler} className={styles.saveStyleButton} color="primary"
-												variant={'contained'}
+					<StyledButton onClick={onSubmit} className={styles.saveStyleButton} color="primary" variant={'contained'}
 												autoFocus>
 						Сохранить
-					</StyledButton>
-					<StyledButton className={styles.cancelStyleButton} onClick={handleClose} color="primary"
-												variant={'contained'}>
-						Не сохранять
 					</StyledButton>
 				</StyledDialogActions>
 			</StyledDialog>

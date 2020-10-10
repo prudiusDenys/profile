@@ -10,6 +10,7 @@ import {Contacts} from "./Contacts/Contacts";
 import {Form} from "./Form/Form";
 import {restoreState} from "../../localStorage/localStorage";
 import {AlertDialog} from "../../common/components/ConfirmAlert/ConfirmAlert";
+import {Alert} from "../../common/components/Alert/Alert";
 
 export type ProfileDataType = {
 	personName: string
@@ -31,22 +32,18 @@ export const Profile = () => {
 	}
 
 	const [profile, setProfile] = useState<ProfileDataType>(restoreState('formData', profileData))
-
 	const [newProfile, setNewProfile] = useState<ProfileDataType>(profileData)
-
-	const [editProfile, setEditProfile] = useState(false)
-	const [open, setOpen] = React.useState(true);
+	const [editProfile, setEditProfile] = useState<boolean>(false)
+	const [open, setOpen] = useState<boolean>(false);
+	const [alert, setAlert] = useState<boolean>(false)
 
 
 	const onClick = (value: boolean) => {
 		setEditProfile(value)
 	}
-
-
 	const getNewProfileData = (data: ProfileDataType) => {
 		setNewProfile(data)
 	}
-
 
 	return (
 		<div className={classes.profile} style={profileBackground}>
@@ -66,7 +63,8 @@ export const Profile = () => {
 						<Form setProfile={setProfile} setOpen={setOpen} getNewProfileData={getNewProfileData}/>}
 				</div>
 			</div>
-			<AlertDialog open={open} setOpen={setOpen} newProfile={newProfile} setProfile={setProfile}/>
+			{!alert ? <AlertDialog open={open} setAlert={setAlert} setOpen={setOpen}/> :
+				<Alert open={open} newProfile={newProfile} setAlert={setAlert} setProfile={setProfile} setOpen={setOpen}/>}
 		</div>
 	)
 }

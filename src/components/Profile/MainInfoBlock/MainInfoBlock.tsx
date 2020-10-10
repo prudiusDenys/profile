@@ -7,7 +7,7 @@ import {BigAvatar} from "../../../common/components/BigAvatar/BigAvatar";
 
 
 type PropsType = {
-	onClick: (value: boolean)=>void
+	onClick: (value: boolean) => void
 	editProfile: boolean
 	personName: string
 }
@@ -24,7 +24,6 @@ export const MainInfoBlock = (props: PropsType) => {
 		props.onClick(!props.editProfile)
 	}
 
-
 	return (
 		<div className={classes.mainInfoBlock}>
 			<div className={classes.mainInfoBlockContent}>
@@ -36,8 +35,10 @@ export const MainInfoBlock = (props: PropsType) => {
 						{props.personName}
 					</div>
 				</div>
-				<Button style={{color:'#fff', fontWeight:'bold', fontSize: '14px'}} variant={'text'} color='inherit' endIcon={!props.editProfile ? <CreateIcon/> : <CloseIcon/>}
-								onClick={onclickHandler}><span className={classes.btnSpan}>{!props.editProfile ? buttonData.edit : buttonData.form}</span> </Button>
+				<Button style={{color: '#fff', fontWeight: 'bold', fontSize: '14px'}} variant={'text'} color='inherit'
+								endIcon={!props.editProfile ? <CreateIcon/> : <CloseIcon/>}
+								onClick={onclickHandler}><span
+					className={classes.btnSpan}>{!props.editProfile ? buttonData.edit : buttonData.form}</span> </Button>
 			</div>
 		</div>
 	)
