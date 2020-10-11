@@ -5,18 +5,14 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import {restoreState, saveState} from "../../../localStorage/localStorage";
-import {makeStyles, withStyles, useMediaQuery} from '@material-ui/core';
-import {ProfileDataType} from "../../../components/Profile/Profile";
-import {requestsAPI} from "../../../api/apiRequests";
+import {makeStyles, withStyles, useMediaQuery, CircularProgress} from '@material-ui/core';
 import {theme} from "../../styles/theme";
 
 type PropsType = {
 	open: boolean
 	setOpen: (value: boolean) => void
-	newProfile: ProfileDataType
-	setProfile: (value: ProfileDataType) => void
 	setAlert: (value: boolean) => void
+	setEditProfile: (value: boolean) =>void
 }
 
 const useStyles = makeStyles({
@@ -94,15 +90,10 @@ export const Alert = (props: PropsType) => {
 		},
 	})(Dialog)
 
-	const onSubmit = () => {
-		saveState('formData', props.newProfile)
-		requestsAPI.createRequestAPI(props.newProfile)
-			.then(res => {
-				props.setProfile(restoreState('formData', props.newProfile))
-				props.setOpen(false);
-				props.setAlert(false)
-			})
-			.catch(error => console.log(error))
+	const onClickHandler = () => {
+		props.setOpen(false);
+		props.setAlert(false);
+		props.setEditProfile(false)
 	}
 
 	return (
@@ -119,9 +110,9 @@ export const Alert = (props: PropsType) => {
 					</StyledDialogContentText>
 				</StyledDialogContent>
 				<StyledDialogActions>
-					<StyledButton onClick={onSubmit} className={styles.saveStyleButton} color="primary" variant={'contained'}
+					<StyledButton onClick={onClickHandler} className={styles.saveStyleButton} color="primary" variant={'contained'}
 												autoFocus>
-						Сохранить
+						Хорошо
 					</StyledButton>
 				</StyledDialogActions>
 			</StyledDialog>

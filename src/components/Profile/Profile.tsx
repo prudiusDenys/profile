@@ -63,8 +63,8 @@ export const Profile = () => {
 						<Form setProfile={setProfile} setOpen={setOpen} getNewProfileData={getNewProfileData}/>}
 				</div>
 			</div>
-			{!alert ? <AlertDialog open={open} setAlert={setAlert} setOpen={setOpen}/> :
-				<Alert open={open} newProfile={newProfile} setAlert={setAlert} setProfile={setProfile} setOpen={setOpen}/>}
+			{!alert ? <AlertDialog open={open} setAlert={setAlert} setOpen={setOpen} newProfile={newProfile} setProfile={setProfile}/> :
+				<Alert open={open}  setAlert={setAlert}  setOpen={setOpen} setEditProfile={setEditProfile}/>}
 		</div>
 	)
 }

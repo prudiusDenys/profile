@@ -1,19 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './ConfirmAlert.module.scss'
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
-import {makeStyles, withStyles, IconButton, useMediaQuery,} from '@material-ui/core';
+import {makeStyles, withStyles, IconButton, useMediaQuery, CircularProgress,} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import {theme} from "../../styles/theme";
+import {restoreState, saveState} from "../../../localStorage/localStorage";
+import {requestsAPI} from "../../../api/apiRequests";
+import {ProfileDataType} from "../../../components/Profile/Profile";
 
 
 type PropsType = {
 	open: boolean
 	setAlert: (value: boolean) => void
 	setOpen: (value: boolean) => void
+	newProfile: ProfileDataType
+	setProfile: (value: ProfileDataType) => void
 }
 
 const useStyles = makeStyles(theme => ({
@@ -36,7 +41,6 @@ const useStyles = makeStyles(theme => ({
 		height: '24px',
 	}
 }))
-
 
 const StyledDialogContent = withStyles({
 	root: {
@@ -67,6 +71,7 @@ const StyledDialogActions = withStyles({
 		padding: '0',
 		alignItems: 'normal',
 		justifyContent: 'center',
+		textAlign: 'center'
 	},
 	spacing: {
 		"$:not(:first-child)": {
@@ -100,6 +105,8 @@ const StyledIconButton = withStyles({
 
 export const AlertDialog = (props: PropsType) => {
 
+	const [loading, setLoading] = useState(false)
+
 	const matches = useMediaQuery(theme.breakpoints.down('xs'))
 
 	const StyledDialog = withStyles({
@@ -118,9 +125,17 @@ export const AlertDialog = (props: PropsType) => {
 		props.setOpen(false)
 	};
 
-	const onClickHandler = () => {
-		props.setOpen(true);
-		props.setAlert(true);
+	const onSubmit = async () => {
+		await setLoading(true)
+		saveState('formData', props.newProfile)
+		requestsAPI.createRequestAPI(props.newProfile)
+			.then(res => {
+				props.setProfile(restoreState('formData', props.newProfile))
+				props.setOpen(true);
+				props.setAlert(true)
+				setLoading(false)
+			})
+			.catch(error => console.log(error))
 	}
 
 	return (
@@ -139,8 +154,9 @@ export const AlertDialog = (props: PropsType) => {
 						<span className={classes.contentTextSpan}>Сохранить изменения?</span>
 					</StyledDialogContentText>
 				</StyledDialogContent>
-				<StyledDialogActions>
-					<StyledButton onClick={onClickHandler} className={styles.saveStyleButton} color="primary"
+
+				{!loading ? <StyledDialogActions>
+					<StyledButton onClick={onSubmit} className={styles.saveStyleButton} color="primary"
 												variant={'contained'}
 												autoFocus>
 						Сохранить
@@ -149,7 +165,9 @@ export const AlertDialog = (props: PropsType) => {
 												variant={'contained'}>
 						Не сохранять
 					</StyledButton>
-				</StyledDialogActions>
+				</StyledDialogActions> : <CircularProgress style={{margin: '0 auto'}}/>}
+
+
 			</StyledDialog>
 		</div>
 	);
